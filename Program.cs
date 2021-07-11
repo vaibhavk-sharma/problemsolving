@@ -12,37 +12,41 @@ namespace problemsolving
 
             //int n = Convert.ToInt32(Console.ReadLine().Trim());
 
-            // List<char> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToChar(arrTemp)).ToList();
+            // List<char> charArray = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToChar(arrTemp)).ToList();
+            // Accept 
+            // List<int> intArray = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(item => Convert.ToInt32(item)).ToList();
 
-            // List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(item=>Convert.ToInt32(item)).ToList();
 
             string value = Console.ReadLine().Trim();
 
-            Result.printLargestPalindrome(value);
-            //Result.printSecondMinimum(arr);
+            // Result.printLargestPalindrome(value);
 
-            //Result.printDuplicates(arr);
+            //Result.printSecondMinimum(intArray);
+
+            //Result.printDuplicates(charArray);
+
+            // Result.printDuplicate(value.ToList());
+
+            Result.reverseString(value);
+
         }
     }
 
     class Result
     {
-
-        /*
-         * Complete the 'plusMinus' function below.
-         *
-         * The function accepts INTEGER_ARRAY arr as parameter.
-         */
-
         public static void printDuplicates(List<char> charArray)
         {
-            var stack = new System.Collections.Stack();
+            // Loop through the array
+            // for each character, check if the specified char exists in rest of the collection
+            // if yes, insert into a new array
+            // Print new array
+
+            //var stack = new System.Collections.Stack();
             List<char> newArray = new List<char>();
 
             for (int i = 0; i < charArray.Count - 1; i++)
             {
-
-                stack.Push(charArray[i]);
+                //stack.Push(charArray[i]);
 
                 if (charArray.FindIndex(i + 1, charArray.Count - (i + 1), c => c.Equals(charArray[i])) > -1)
                 {
@@ -67,9 +71,10 @@ namespace problemsolving
 
         public static void printLargestPalindrome(string value)
         {
-            // abfgerccdedccfgfer , ccdedcc
-            // Find the palindrome
-            // Check length
+            // abfjgerccdeedccjfgfer , ccdeedcc
+            // Find the palindromes
+            // Check length and store in array
+            // Print with max length palindrome
 
             List<char> stringArray = value.ToList();
 
@@ -111,5 +116,41 @@ namespace problemsolving
             Console.WriteLine(largestPalindrome);
 
         }
+
+        public static void printDuplicate(List<char> array)
+        {
+            array.Sort();
+            for (int i = 0; i < array.Count - 1; i++)
+            {
+                Console.WriteLine($"iteration: {i}");
+                if (array[i] == array[i + 1])
+                {
+                    Console.WriteLine(array[i]);
+                    break;
+                }
+            }
+        }
+
+        public static void reverseString(string str)
+        {
+            // convert to Array
+            // Reverse array
+            // generate string
+
+            char[] charArray = str.ToCharArray();
+            for (int i = 0, j = str.Length - 1; i < charArray.Length - 2; i++, j--)
+            {
+                var temp = charArray[i];
+                charArray[i] = charArray[j];
+                charArray[j] = temp;
+            }
+
+            string reversedString = new string(charArray);
+
+            Console.WriteLine(reversedString);
+
+        }
+
+
     }
 }
