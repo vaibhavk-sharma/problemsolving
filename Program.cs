@@ -138,7 +138,7 @@ namespace problemsolving
             // generate string
 
             char[] charArray = str.ToCharArray();
-            for (int i = 0, j = str.Length - 1; i < charArray.Length - 2; i++, j--)
+            for (int i = 0, j = str.Length - 1; i < charArray.Length / 2; i++, j--)
             {
                 var temp = charArray[i];
                 charArray[i] = charArray[j];
@@ -150,7 +150,22 @@ namespace problemsolving
             Console.WriteLine(reversedString);
 
         }
-
+        
+        public static int CalculateDiagonalDifference(List<List<int>> arr)
+        {
+            //1 8 5
+            //1 6 7
+            //1 4 -2  
+            // Result = (1+6-2) - (5+6+1) = -7 = 7
+            var n = arr.Count;
+            int lRSum = 0, rLSum = 0;      
+            for(int i=0,j=n-1;i<=n-1;i++,j--)
+            {                
+                lRSum += arr[i][i];
+                rLSum += arr[i][j]; 
+            }
+            return lRSum>rLSum?lRSum-rLSum:rLSum-lRSum;
+        }
 
     }
 }
